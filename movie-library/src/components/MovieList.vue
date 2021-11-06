@@ -4,15 +4,11 @@
     <div class="movie" v-for="movie in movies" :key="movie.id">
       <div class="info">
         <h1>{{movie.title}}</h1>
-        <p><em>{{movie.genre}}</em></p>
-        <p>Duration: {{movie.duration}} mins</p>
+        <p><em>{{movie.genre}}</em><br>Duration: <u>{{movie.duration}} mins</u></p>
       </div>
-      <!-- <div class="image">
-        <img :src="'/images/movies/'+movie.image">
-      </div> -->
       <div class="duration">
-        <p><em>Producer: {{movie.producer}}</em></p>
-        <!-- <button v-on:click="addToCart(movie)" class="auto">Add to Cart</button> -->
+        <p>Producer: <em>{{movie.producer}}</em></p>
+        <button v-on:click="switchToMovie(movie.id)" class="auto">More Info</button>
       </div>
     </div>
   </div>
@@ -25,8 +21,11 @@ export default {
   props: {
     movies: Array
   },
-  // methods: {
-  // }
+  methods: {
+    switchToMovie(id) {
+      this.$router.push(`/movie/${id}`);
+    }
+  }
 }
 </script>
 
@@ -50,36 +49,24 @@ export default {
   width: 200px;
 }
 
-.movie img {
-  border: 2px solid #333;
-  height: 250px;
-  width: 200px;
-  object-fit: cover;
-}
-
-.movie .image {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 5px;
-}
-
 .info {
   background: #799fad;
   color: #000;
   padding: 10px 30px;
-  height: 150px;
+  height: 125px;
 }
 
 .info h1 {
   font-size: 14px;
+  text-align: center;
 }
 
 .info p {
   text-align: center;
   margin: 0px;
-  font-size: 12px;
+  font-size: 14px;
+  margin-bottom: 8px;
 }
-
 
 .duration {
   display: flex;
@@ -87,5 +74,12 @@ export default {
 
 .auto {
   margin-left: auto;
+}
+
+button {
+  text-align: center;
+  background-color: #464b4d;
+  color: #ccbe1f;
+  height: 35px;
 }
 </style>

@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Genre from '../views/Genres.vue'
-// import Cart from '../views/Cart.vue'
+import Movie from '../views/Movie.vue'
 
 Vue.use(VueRouter)
 
@@ -16,11 +16,11 @@ const routes = [{
     name: 'Genre',
     component: Genre
   },
-  // {
-  //   path: '/cart',
-  //   name: 'Cart',
-  //   component: Cart
-  // }
+  {
+    path: '/movie/:id',
+    name: 'Movie',
+    component: Movie
+  }
 ]
 
 const router = new VueRouter({
